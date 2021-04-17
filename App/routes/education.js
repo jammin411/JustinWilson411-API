@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import { MongoClient } from 'mongodb';
-var router = Router();
+var express = require('express');
+var router = express.Router();
+var MongoClient = require('mongodb');
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
@@ -21,4 +21,4 @@ router.get('/', async (req, res, next) => {
   }  
 });
 
-export default router;
+module.exports = router;

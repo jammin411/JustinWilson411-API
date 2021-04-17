@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const cors = require('cors');
 
 var personalRouter = require('./routes/personal')
 var experienceRouter = require('./routes/experience')
@@ -28,6 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(cors());
 
 //Routes
 app.use('/Personal', personalRouter);
