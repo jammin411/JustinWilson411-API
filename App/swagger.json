@@ -1,0 +1,215 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Justin Wilson Portfolio API",
+        "description": "My Portfolio Website API, also used as a demo of Express JS",
+        "contact": {
+          "name": "Justin Wilson"
+        },
+        "license": {
+          "name": "MIT"
+        }
+      },
+      "host": "localhost:3000",
+      "basePath": "/",
+      "schemes": [
+        "http",
+        "https"
+      ],
+      "consumes": [
+        "application/json"
+      ],
+      "produces": [
+        "application/json"
+      ],
+    "paths": {
+        "/personal": {
+            "get": {
+                "tags": ["Personal"],
+                "description": "Get all personal information for display",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/experience": {
+            "get": {
+                "tags": ["Experience"],
+                "description": "Get all previous experience for display",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/education": {
+            "get": {
+                "tags": ["Education"],
+                "description": "Get all previous Education for display",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/accomplishments": {
+            "get": {
+                "tags": ["Accomplishments"],
+                "description": "Get all Accomplishments for display",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Personal": {
+            "required": [
+                "FirstName", "LastName", "TagLine1", "TagLine2", "TagLine3", "Credentials", "Social"
+            ],
+            "properties": {
+                "FirstName": {
+                    "type": "string"
+                },
+                "MiddleName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "TagLine1": {
+                    "type": "string"
+                },
+                "TagLine2": {
+                    "type": "string"
+                },
+                "TagLine3": {
+                    "type": "string"
+                },
+                "Credentials": {
+                    "type": "string"
+                },
+                "Social": {
+                    "type": "object",
+                    "properties": {
+                        "LinkedIn": {
+                            "type": "object",
+                            "properties": {
+                                "URL": {
+                                    "type": "string"
+                                },
+                                "DisplayName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "Twitter": {
+                            "type": "object",
+                            "properties": {
+                                "URL": {
+                                    "type": "string"
+                                },
+                                "DisplayName": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }                    
+                }
+            }
+        },
+        "Accomplishments": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Header": {
+                        "type": "string"
+                    },
+                    "Description": {
+                        "type": "string"
+                    },
+                    "Bullets": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Education": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "School": {
+                        "type": "string"
+                    },
+                    "Degree": {
+                        "type": "string"
+                    },
+                    "FromDate": {
+                        "type": "integer"
+                    },
+                    "ToDate": {
+                        "type": "integer"
+                    },
+                    "Description": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Experience": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Title": {
+                        "type": "string"
+                    },
+                    "Company": {
+                        "type": "string"
+                    },
+                    "FromDate": {
+                        "type": "string"
+                    },
+                    "ToDate": {
+                        "type": "string"
+                    },
+                    "DescriptionBullets": {
+                        "type": "object",
+                        "properties": {
+                            "Description": {
+                                "type": "string"
+                            },
+                            "Bullets": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
