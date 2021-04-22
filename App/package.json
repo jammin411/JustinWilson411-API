@@ -14,8 +14,9 @@
     "helmet": "^4.4.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "mongoose": "^5.12.4",
+    "mongoose": "^5.12.5",
     "morgan": "~1.9.1",
+    "nocache": "^2.1.0",
     "swagger-ui-express": "^4.1.6"
   }
 }

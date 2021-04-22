@@ -8,11 +8,13 @@ const compression = require('compression');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const nocache = require('nocache');
 
-var personalRouter = require('./routes/personal')
-var experienceRouter = require('./routes/experience')
-var educationRouter = require('./routes/education')
-var accomplishmentRouter = require('./routes/accomplishments')
+const personalRouter = require('./routes/personal')
+const experienceRouter = require('./routes/experience')
+const educationRouter = require('./routes/education')
+const accomplishmentRouter = require('./routes/accomplishments')
 
 var app = express();
 
@@ -30,6 +32,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors());
+app.use(nocache());
+
+//connect to mongoose
+mongoose.connect(process.env.MONGODBCONN, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const connection = mongoose.connection;
+
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully!');
+});
 
 //Routes
 app.use('/Personal', personalRouter);
